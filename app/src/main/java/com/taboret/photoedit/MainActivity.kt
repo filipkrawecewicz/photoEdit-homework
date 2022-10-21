@@ -2,10 +2,7 @@ package com.taboret.photoedit
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,6 +12,15 @@ class MainActivity : AppCompatActivity() {
         val mImageView = findViewById<ImageView>(R.id.image_view_1)
         val mEditText = findViewById<EditText>(R.id.edit_text_1)
         val mButton = findViewById<Button>(R.id.button_1)
+        val mSeekBar = findViewById<SeekBar>(R.id.seekBar)
+        mSeekBar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) { mImageView.setAlpha(p1)
+            }
+            override fun onStartTrackingTouch(p0: SeekBar?) {
+            }
+            override fun onStopTrackingTouch(p0: SeekBar?) {
+            }
+        })
 
         // When button is clicked
         mButton.setOnClickListener {
@@ -28,5 +34,7 @@ class MainActivity : AppCompatActivity() {
                     .show()
             }
         }
+
+
     }
 }
